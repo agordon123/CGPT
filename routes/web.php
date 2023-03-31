@@ -1,11 +1,12 @@
 <?php
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatGPTIndexController;
 use App\Http\Controllers\ChatGPTStoreController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\ChatGPTDestroyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use Inertia\Inertia;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -35,8 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/chat/{id?',ChatGPTIndexController::class)->name('chat.show');
-    Route::post('/chat/{id?}',ChatGPTStoreController::class)->name('chat.store');
+Route::get('/chat/{id?}', ChatGPTIndexController::class)->name('chat.show');
+Route::post('/chat/{id?}', ChatGPTStoreController::class)->name('chat.store');
+Route::delete('/chat/{chat}', ChatGPTDestroyController::class)->name('chat.destroy');
+
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
