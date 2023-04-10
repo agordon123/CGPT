@@ -27,7 +27,8 @@ const user = computed(() => props.content?.role === "user");
                 />
             </svg>
             <svg
-                v-if="content.role === 'assistant'"
+                v-if="content.role === 'assistant'
+                "
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

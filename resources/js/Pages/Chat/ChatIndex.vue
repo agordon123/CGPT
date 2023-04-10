@@ -175,7 +175,7 @@ const title = computed(() => props.chat?.context[0].content ?? "New Chat");
                             v-model="form.prompt"
                             @keyup.enter="submit"
                             :disabled="form.processing"
-                            ref="promtInput"
+                            ref="promptInput"
                         />
                         <div
                             class="absolute inset-y-0 right-0 flex items-center pl-3"
